@@ -1,0 +1,26 @@
+{
+  "name": "steam-auto-player",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.20",
+    "sleep-promise": "^8.0.1",
+    "steam-user": "^4.18.0"
+  },
+  "bin": {
+    "steam-auto-player": "./index.js"
+  },
+  "scripts": {
+    "package:win32": "pkg . --targets node10-win-x64,node10-macos-x64"
+  },
+  "devDependencies": {
+    "pkg": "^4.4.9"
+  },
+  "pkg": {
+    "scripts": ["node_modules/@doctormckay/**/*.js", "node_modules/lzma/**/*.js"],
+    "assets": ["node_modules/@doctormckay/**/*", "node_modules/lzma/**/*"]
+  }
+
+}

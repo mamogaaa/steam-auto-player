@@ -1,0 +1,5 @@
+/node_modules
+/MaFiles
+/config.json
+/steam-auto-player-*
+.DS_Store
