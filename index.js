@@ -86,8 +86,23 @@ const getGames = () => new Promise((resolve, reject) => {
     })
 })
 
+const requestFreeLicense = (appids = [730]) => new Promise((resolve, reject) => {
+    client.requestFreeLicense(appids, (err, grantedPackageIds, grantedAppIds) => {
+        resolve([grantedPackageIds, grantedAppIds])
+    })
+})
+
 const selectGames = async (config = {}) => {
     if (config.selectedGames) return config.selectedGames
+    let { requestCsgoLicense } =  await inquirer.prompt({
+        type: 'confirm',
+        name: 'requestCsgoLicense',
+        messaage: 'Request CSGO license',
+        default: false
+    })
+    if (requestCsgoLicense) {
+        await requestFreeLicense([730])
+    }
     let allGames = await getGames()
     let { selectedGames } = await inquirer.prompt({
         type: 'checkbox',
